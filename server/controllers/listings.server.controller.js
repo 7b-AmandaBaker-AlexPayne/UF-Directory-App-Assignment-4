@@ -63,7 +63,7 @@ exports.update = function(req, res) {
     } else {
       res.json(listing);
     }
-  };
+  });
 };
 
 /* Delete a listing */
