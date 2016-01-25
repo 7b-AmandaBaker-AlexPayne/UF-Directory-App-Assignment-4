@@ -104,7 +104,6 @@ exports.list = function(req, res) {
 
   console.log("List?");
   Listing.find({}, null, {sort: {code: 1}}, function(err, listing) {
-<<<<<<< HEAD
     if (err) {
       console.log(err);
     } else {
