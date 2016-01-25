@@ -35,12 +35,21 @@ exports.create = function(req, res) {
       res.json(listing);
     }
   });
+
+
+  console.log("\n\nCREATED A LISTING!\n\n");
+
+
 };
 
 /* Show the current listing */
 exports.read = function(req, res) {
   /* send back the listing as json from the request */
   res.json(req.listing);
+
+  console.log("\n\nSHOWED THE CURRENT LISTING!\n\n");
+
+
 };
 
 /* Update a listing */
@@ -57,13 +66,18 @@ exports.update = function(req, res) {
       }
   }*/
   /* Save the article */
-  listing.save( function (err) {
-    if (err) {
+  listing.save(function(err) {
+    if(err) {
       console.log(err);
+      res.status(400).send(err);
     } else {
       res.json(listing);
     }
   });
+
+  console.log("\n\nUPDATED A LISTING!\n\n");
+
+
 };
 
 /* Delete a listing */
@@ -78,6 +92,10 @@ exports.delete = function(req, res) {
           console.log('Removed ' + listing.name);
       }
   })
+
+  console.log("\n\nDELETED A LISTING!\n\n");
+
+
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
@@ -86,6 +104,10 @@ exports.list = function(req, res) {
   Listing.find({}, null, {sort: {code: 1}}, function(err, listing) {
    res.json(listing);
  });
+
+  console.log("\n\nGOT ALL DEM LISTINGS!\n\n");
+
+
 };
 
 /*
@@ -104,4 +126,9 @@ exports.listingByID = function(req, res, next, id) {
       next();
     }
   });
+
+  console.log("\n\nFOUND A LISTING BY ID!\n\n");
+
+
+
 };
